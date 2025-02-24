@@ -9,7 +9,7 @@ plugins {
 
 
 android {
-    namespace = "com.example.ni"
+    namespace = "com.example.feedarticlejetpack"
     compileSdk = 35
 
     buildFeatures {
@@ -21,7 +21,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.example.ni"
+        applicationId = "com.example.feedarticlejetpack"
         minSdk = 25
         targetSdk = 35
         versionCode = 1
