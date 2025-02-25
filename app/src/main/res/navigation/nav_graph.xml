@@ -62,6 +62,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailArticleFragment"
             app:destination="@id/detailArticleFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editArticleFragment"
+            app:destination="@id/editArticleFragment" />
     </fragment>
      <fragment
         android:id="@+id/addArticleFragment"
@@ -85,7 +88,21 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
         <argument
-            android:name="idArticle"
-            app:argType="long" />
+            android:name="article"
+            app:argType="com.example.feedarticlejetpack.network.dtos.ArticleDto" />
+    </fragment>
+    <fragment
+        android:id="@+id/editArticleFragment"
+        android:name="com.example.feedarticlejetpack.ui.editArticle.EditArticleFragment"
+        android:label="fragment_edit_article"
+        tools:layout="@layout/fragment_edit_article" >
+        <action
+            android:id="@+id/action_editArticleFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="article"
+            app:argType="com.example.feedarticlejetpack.network.dtos.ArticleDto" />
     </fragment>
 </navigation>

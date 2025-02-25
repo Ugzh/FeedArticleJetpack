@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_editArticle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.editArticle.EditArticleFragment"
+    >
+
+
+    <TextView
+        android:id="@+id/tv_editArticle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/edit_article"
+        android:theme="@style/AppNameTitleTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_editArticle_articleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="@color/blue"
+        android:layout_marginTop="40dp"
+
+        android:textSize="16sp"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_editArticle_title"
+        tools:text="Title" />
+
+    <EditText
+        android:id="@+id/et_editArticle_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:layout_marginTop="40dp"
+
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="@+id/et_editArticle_articleTitle"
+        app:layout_constraintStart_toStartOf="@+id/et_editArticle_articleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/et_editArticle_articleTitle"
+        tools:text="description" />
+
+    <EditText
+        android:id="@+id/et_editArticle_imageUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:layout_marginTop="40dp"
+        android:text="@string/image_url"
+        android:textColor="@color/blue"
+        android:textSize="16sp"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="@+id/et_editArticle_description"
+        app:layout_constraintStart_toStartOf="@+id/et_editArticle_description"
+        app:layout_constraintTop_toBottomOf="@+id/et_editArticle_description" />
+
+    <ImageView
+        android:id="@+id/iv_editArticle_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/feedarticles_logo"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_editArticle_imageUrl"
+        app:layout_constraintStart_toStartOf="@+id/et_editArticle_imageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/et_editArticle_imageUrl" />
+
+    <RadioGroup
+        android:id="@+id/rg_addArticle_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/iv_editArticle_image"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="@+id/iv_editArticle_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_editArticle_image">
+
+
+        <RadioButton
+            android:id="@+id/rb_editArticle_sport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sport"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/rb_editArticle_manga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/manga"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rb_addArticle_sport"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioButton
+            android:id="@+id/rb_editArticle_various"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/various"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/rb_addArticle_manga"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_editArticle_delete"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/delete"
+        app:cornerRadius="0dp"
+        android:layout_marginTop="20dp"
+        android:theme="@style/ButtonStyle"
+        app:layout_constraintStart_toStartOf="@+id/et_editArticle_imageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/rg_addArticle_cat"
+        app:layout_constraintEnd_toStartOf="@+id/btn_editArticle_update"/>
+
+    <Button
+        android:id="@+id/btn_editArticle_update"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/update"
+        android:theme="@style/ButtonStyle"
+        app:cornerRadius="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_editArticle_imageUrl"
+        app:layout_constraintStart_toEndOf="@+id/btn_editArticle_delete"
+        app:layout_constraintTop_toTopOf="@+id/btn_editArticle_delete" />
+</androidx.constraintlayout.widget.ConstraintLayout>

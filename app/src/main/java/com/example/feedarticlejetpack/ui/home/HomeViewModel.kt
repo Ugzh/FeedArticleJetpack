@@ -1,8 +1,10 @@
 package com.example.feedarticlejetpack.ui.home
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.navigation.NavDirections
 import com.example.feedarticlejetpack.R
 import com.example.feedarticlejetpack.network.ApiService
 import com.example.feedarticlejetpack.network.Prefs
@@ -24,6 +26,10 @@ class HomeViewModel @Inject constructor(
     private var _articlesFilteredListLiveData = MutableLiveData<List<ArticleDto>>()
     val articlesFilteredListLiveData
         get() = _articlesFilteredListLiveData
+
+    private var _navDirectionLiveData = MutableLiveData<NavDirections?>()
+    val navDirectionLiveData
+        get() = _navDirectionLiveData
 
     private var _userMessage = MutableLiveData<Int>()
     val userMessage
@@ -76,6 +82,45 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun openEditOrDetailFragment(idArticle: Long){
+        viewModelScope.launch {
+            val response = withContext(Dispatchers.IO){
+                db.getArticle(myPrefs.token!!, idArticle)
+            }
+
+            val body = response?.body()
+
+            when{
+                response == null -> _userMessage.value = R.string.no_response_database
+                body == null -> _userMessage.value = R.string.error_from_database
+                response.isSuccessful -> {
+                    when(body.status){
+                        "ok" -> {
+                            if(body.article.idU == myPrefs.userId)
+                                _navDirectionLiveData.value =
+                                    HomeFragmentDirections.
+                                    actionHomeFragmentToEditArticleFragment(body.article)
+                            else
+                                _navDirectionLiveData.value =
+                                    HomeFragmentDirections.
+                                    actionHomeFragmentToDetailArticleFragment(body.article)
+                        }
+                        "unauthorized" -> {
+                            _userMessage.value = R.string.unauthorized
+                        }
+                        else -> {
+                            _userMessage.value = R.string.error_from_database_redirection
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    fun resetNavDirectionLiveData(){
+        _navDirectionLiveData.value = null
+    }
+
     fun getFilteredListArticles(idButton: Int){
         when(idButton){
             R.id.rb_home_sport -> 1
@@ -87,9 +132,6 @@ class HomeViewModel @Inject constructor(
                 _articlesListLiveData.value?.filter { it.category == cat }
             else
                 _articlesListLiveData.value?.sortedByDescending { it.createdAt }
-            
         }
-
-
     }
 }

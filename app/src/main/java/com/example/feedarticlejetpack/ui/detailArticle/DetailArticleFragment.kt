@@ -37,16 +37,12 @@ class DetailArticleFragment : Fragment() {
             Toast.makeText(view.context, getString(it), Toast.LENGTH_SHORT).show()
         }
 
-        args.idArticle.let {
-            vm.getArticleDetail(it)
-        }
-
-        vm.articleLiveData.observe(viewLifecycleOwner){
+        args.article.let {
             when(it.category){
                 1 -> R.string.sport
                 2 -> R.string.manga
                 3 -> R.string.various
-                else -> return@observe
+                else -> return
             }.let { cat ->
                 binding.tvDetailArticleDate.text =
                     getString(R.string.created_at, parsedDate(it.createdAt))
@@ -74,8 +70,10 @@ class DetailArticleFragment : Fragment() {
                 binding.ivDetailArticleStarFill.setOnClickListener { _ ->
                     vm.toggleFavorite(it.id)
                 }
+                vm.setIsFavorite(it.isFav)
             }
         }
+
         binding.btnDetailArticleBack.setOnClickListener {
             findNavController().navigate(R.id.action_detailArticleFragment_to_homeFragment)
         }

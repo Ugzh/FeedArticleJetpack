@@ -19,9 +19,6 @@ class DetailArticleViewModel @Inject constructor(
     private val db: ApiService,
     private val myPrefs: Prefs
 ) : ViewModel() {
-    private var _articleLiveData = MutableLiveData<ArticleDto>()
-    val articleLiveData
-        get() = _articleLiveData
 
     private var _userMessage = MutableLiveData<Int>()
     val userMessage
@@ -31,36 +28,9 @@ class DetailArticleViewModel @Inject constructor(
     val isFavorite
         get() = _isFavorite
 
-
-    fun getArticleDetail(idArticle: Long){
-        viewModelScope.launch {
-            val response = withContext(Dispatchers.IO){
-                db.getArticle(myPrefs.token!!, idArticle)
-            }
-
-            val body = response?.body()
-
-            when{
-                response == null -> _userMessage.value = R.string.no_response_database
-                body == null -> _userMessage.value = R.string.error_from_database
-                response.isSuccessful -> {
-                    when(body.status){
-                        "ok" -> {
-                            _articleLiveData.value = body.article
-                            _isFavorite.value = body.article.isFav == 1
-                        }
-                        "unauthorized" -> {
-                            _userMessage.value = R.string.unauthorized
-                        }
-                        else -> {
-                            _userMessage.value = R.string.error_from_database_redirection
-                        }
-                    }
-                }
-            }
-        }
+    fun setIsFavorite(favInt: Int)  {
+        _isFavorite.value = favInt != 0
     }
-
     fun toggleFavorite(idArticle: Long){
         viewModelScope.launch {
             val response = withContext(Dispatchers.IO){
@@ -75,16 +45,12 @@ class DetailArticleViewModel @Inject constructor(
                 response.isSuccessful -> {
                     when(body.status){
                         1 -> {
-                            when(_isFavorite.value){
-                                true -> {
-                                    _userMessage.value = R.string.remove_to_favorite
-                                    _isFavorite.value = false
-                                }
-                                else -> {
-                                    _userMessage.value = R.string.add_to_favorite
-                                    _isFavorite.value = true
-                                }
-                            }
+                            _userMessage.value = if(_isFavorite.value!!)
+                                R.string.remove_to_favorite
+                            else
+                                R.string.add_to_favorite
+
+                            _isFavorite.value = !_isFavorite.value!!
                         }
                         0, -1 -> _userMessage.value = R.string.status_not_changed
                         -5 -> _userMessage.value = R.string.unauthorized

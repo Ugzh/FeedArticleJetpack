@@ -44,6 +44,9 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
                 cvItemRv.setOnClickListener { _ ->
                     getIdArticleOnClickCallBack?.invoke(it.id)
                 }
+
+                if (it.isFav == 1)
+                    ivRvFavorite.visibility = View.VISIBLE
             }
         }
     }

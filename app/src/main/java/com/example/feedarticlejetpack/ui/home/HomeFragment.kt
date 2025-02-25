@@ -47,9 +47,15 @@ class HomeFragment : Fragment() {
             layoutManager = LinearLayoutManager(view.context)
             adapter = articlesAdapter.apply {
                 setGetIdArticleOnClickCallBack {
-                    val navDir = HomeFragmentDirections.actionHomeFragmentToDetailArticleFragment(it)
-                    findNavController().navigate(navDir)
+                    vm.openEditOrDetailFragment(it)
                 }
+            }
+        }
+
+        vm.navDirectionLiveData.observe(viewLifecycleOwner){
+            it?.let {
+                findNavController().navigate(it)
+                vm.resetNavDirectionLiveData()
             }
         }
 
@@ -75,8 +81,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
+    override fun onDestroy() {
+        super.onDestroy()
         _binding = null
     }
 
