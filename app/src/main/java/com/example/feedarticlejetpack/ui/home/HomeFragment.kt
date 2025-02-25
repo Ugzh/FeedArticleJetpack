@@ -59,7 +59,9 @@ class HomeFragment : Fragment() {
         }
 
         vm.articlesFilteredListLiveData.observe(viewLifecycleOwner){
-            articlesAdapter.submitList(it)
+            articlesAdapter.submitList(it){
+                binding.rvHomeArticles.scrollToPosition(0)
+            }
         }
 
         vm.userMessage.observe(viewLifecycleOwner){
@@ -91,6 +93,11 @@ class HomeFragment : Fragment() {
         }
         binding.ivHomeFavoriteEmpty.setOnClickListener {
             vm.toggleFavoriteList()
+        }
+
+        binding.swHome.setOnRefreshListener {
+            vm.getFilteredListArticles(binding.rgHomeCategories.checkedRadioButtonId)
+            binding.swHome.isRefreshing = false
         }
     }
 
