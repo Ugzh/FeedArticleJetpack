@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
+import androidx.navigation.fragment.findNavController
 import com.example.feedarticlejetpack.R
 import com.example.feedarticlejetpack.databinding.FragmentLoginBinding
 import com.example.feedarticlejetpack.network.Prefs
@@ -43,8 +44,15 @@ class LoginFragment @Inject constructor(): Fragment(){
         vm.userMessage.observe(viewLifecycleOwner){
             Toast.makeText(view.context, getString(it), Toast.LENGTH_SHORT).show()
         }
+
+        binding.tvLoginNoAccount.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
     }
 
-
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 
 }

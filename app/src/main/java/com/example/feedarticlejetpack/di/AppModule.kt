@@ -35,12 +35,16 @@ object AppModule {
             .Builder()
             .addInterceptor(httpLoggingInterceptor)
             .build()
+
     @Singleton
     @Provides
-    fun retrofitClient(okHttpClient: OkHttpClient): Retrofit {
-        val moshi = Moshi.Builder().apply {
-            add(KotlinJsonAdapterFactory())
-        }.build()
+    fun getMoshi(): Moshi = Moshi.Builder().apply {
+        add(KotlinJsonAdapterFactory())
+    }.build()
+
+    @Singleton
+    @Provides
+    fun retrofitClient(okHttpClient: OkHttpClient, moshi: Moshi): Retrofit {
         return Retrofit.Builder()
             .addConverterFactory(MoshiConverterFactory.create(moshi))
             .baseUrl(ApiRoutes.BASE_URL)
@@ -52,10 +56,9 @@ object AppModule {
     @Provides
     fun getApi(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
-
     @Singleton
     @Provides
     fun getSharedPref(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
-    
+
 }

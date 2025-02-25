@@ -42,7 +42,7 @@ class LoginViewModel @Inject constructor(
                     response == null ->
                         _userMessage.value = R.string.no_response_database
 
-                    body == null -> R.string.error_from_database
+                    body == null -> _userMessage.value = R.string.error_from_database
 
                     response.isSuccessful -> {
                         when(body.status){

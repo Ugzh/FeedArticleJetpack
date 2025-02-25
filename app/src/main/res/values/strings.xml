@@ -6,6 +6,7 @@
     <string name="login">Login</string>
     <string name="sign_in">sign in</string>
     <string name="password">password</string>
+    <string name="confirm_password">Confirm password</string>
     <string name="connect">connect</string>
     <string name="no_account_create_here">No account ? Create here !</string>
     <string name="no_response_database">No response database</string>
@@ -13,4 +14,10 @@
     <string name="wrong_informations">Wrong informations, check fields</string>
     <string name="error_from_database">Error from database, please retry in few minutes</string>
     <string name="fill_fields">Please fill all fields</string>
+    <string name="password_not_match">Password doesn\'t match</string>
+    <string name="new_account">New Account</string>
+    <string name="register">Register</string>
+    <string name="login_already_used">Login already used</string>
+    <string name="account_not_created">Account not created, check fields</string>
+    <string name="account_created">Account has been created</string>
 </resources>
