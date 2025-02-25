@@ -9,6 +9,7 @@ import com.example.feedarticlejetpack.network.dtos.RegisterDto
 import com.example.feedarticlejetpack.network.dtos.UpdateArticleDto
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -60,6 +61,12 @@ interface ApiService {
 
     @PUT(ApiRoutes.TOGGLE_FAVORITE)
     suspend fun toggleFavorite(
+        @Path("id") idArticle: Long,
+        @Header("token") token: String
+    ) : Response<OnlyStatusReponseDto>?
+
+    @DELETE(ApiRoutes.DELETE_ARTICLE)
+    suspend fun deleteArticle(
         @Path("id") idArticle: Long,
         @Header("token") token: String
     ) : Response<OnlyStatusReponseDto>?

@@ -5,8 +5,9 @@ object ApiRoutes {
     const val REGISTER = "articles/user/"
     const val LOGIN = "articles/user/"
     const val GET_ALL_ARTICLES = "articles/"
-    const val UPDATE_ARTICLE = "articles/{id}/"
+    const val UPDATE_ARTICLE = "articles/{id}"
     const val TOGGLE_FAVORITE = "articles/{id}"
     const val ADD_ARTICLE = "articles/"
     const val GET_ARTICLE = "articles/"
+    const val DELETE_ARTICLE = "articles/{id}"
 }

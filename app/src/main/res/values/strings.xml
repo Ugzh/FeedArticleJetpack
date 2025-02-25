@@ -31,7 +31,9 @@
     <string name="various">Various</string>
     <string name="save">Save</string>
     <string name="article_created">Article has been created</string>
+    <string name="article_updated">Article has been updated</string>
     <string name="article_not_created">Article has not been created</string>
+    <string name="article_not_updated">Article has not been updated</string>
     <string name="all">All</string>
     <string name="details_article">Details Article</string>
     <string name="back">Back</string>
@@ -40,9 +42,9 @@
     <string name="add_to_favorite">Has been added to favorite</string>
     <string name="remove_to_favorite">Has been removed to favorite</string>
     <string name="status_not_changed">Status not changed</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="edit_article">Edit Article</string>
     <string name="delete">Delete</string>
     <string name="update">Update</string>
+    <string name="article_deleted">Article has been deleted</string>
+    <string name="article_not_deleted">Article has not been deleted</string>
 </resources>

@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
         }
 
 
-
         binding.rvHomeArticles.apply {
             layoutManager = LinearLayoutManager(view.context)
             adapter = articlesAdapter.apply {

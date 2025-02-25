@@ -79,7 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_editArticle_imageUrl" />
 
     <RadioGroup
-        android:id="@+id/rg_addArticle_cat"
+        android:id="@+id/rg_editArticle_cat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -93,6 +93,7 @@
         <RadioButton
             android:id="@+id/rb_editArticle_sport"
             android:layout_width="wrap_content"
+            android:buttonTint="@color/blue"
             android:layout_height="wrap_content"
             android:text="@string/sport"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -103,6 +104,7 @@
             android:id="@+id/rb_editArticle_manga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:buttonTint="@color/blue"
             android:layout_marginStart="10dp"
             android:text="@string/manga"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -114,6 +116,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:buttonTint="@color/blue"
             android:text="@string/various"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/rb_addArticle_manga"
@@ -129,7 +132,7 @@
         android:layout_marginTop="20dp"
         android:theme="@style/ButtonStyle"
         app:layout_constraintStart_toStartOf="@+id/et_editArticle_imageUrl"
-        app:layout_constraintTop_toBottomOf="@+id/rg_addArticle_cat"
+        app:layout_constraintTop_toBottomOf="@+id/rg_editArticle_cat"
         app:layout_constraintEnd_toStartOf="@+id/btn_editArticle_update"/>
 
     <Button

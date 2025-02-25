@@ -72,6 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
+            android:checked="true"
+            android:buttonTint="@color/blue"
             android:text="@string/all"
             />
         <RadioButton
@@ -79,18 +81,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:buttonTint="@color/blue"
             android:text="@string/sport" />
         <RadioButton
             android:id="@+id/rb_home_manga"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:buttonTint="@color/blue"
             android:text="@string/manga" />
         <RadioButton
             android:id="@+id/rb_home_various"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:buttonTint="@color/blue"
             android:text="@string/various" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>
