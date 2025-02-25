@@ -7,4 +7,5 @@ object ApiRoutes {
     const val GET_ALL_ARTICLES = "articles/"
     const val UPDATE_ARTICLE = "articles/{id}/"
     const val ADD_ARTICLE = "articles/"
+    const val GET_ARTICLE = "articles/"
 }

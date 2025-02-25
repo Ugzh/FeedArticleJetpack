@@ -33,4 +33,8 @@
     <string name="article_created">Article has been created</string>
     <string name="article_not_created">Article has not been created</string>
     <string name="all">All</string>
+    <string name="details_article">Details Article</string>
+    <string name="back">Back</string>
+    <string name="category_type">Category : %s</string>
+    <string name="created_at">Created %s</string>
 </resources>

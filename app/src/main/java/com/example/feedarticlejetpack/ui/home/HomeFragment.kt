@@ -41,12 +41,19 @@ class HomeFragment : Fragment() {
             vm.disconnectUser()
         }
 
+
+
         binding.rvHomeArticles.apply {
             layoutManager = LinearLayoutManager(view.context)
-            adapter = articlesAdapter
+            adapter = articlesAdapter.apply {
+                setGetIdArticleOnClickCallBack {
+                    val navDir = HomeFragmentDirections.actionHomeFragmentToDetailArticleFragment(it)
+                    findNavController().navigate(navDir)
+                }
+            }
         }
 
-        vm.articlesListLiveData.observe(viewLifecycleOwner){
+        vm.articlesFilteredListLiveData.observe(viewLifecycleOwner){
             articlesAdapter.submitList(it)
         }
 
@@ -64,7 +71,7 @@ class HomeFragment : Fragment() {
         }
 
         binding.rgHomeCategories.setOnCheckedChangeListener{ rg, _ ->
-            
+            vm.getFilteredListArticles(rg.checkedRadioButtonId)
         }
     }
 

@@ -9,13 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.feedarticlejetpack.R
 import com.example.feedarticlejetpack.databinding.ItemRvArticleBinding
 import com.example.feedarticlejetpack.network.dtos.ArticleDto
+import com.example.feedarticlejetpack.utils.parsedDate
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 
 class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter.ArticleHolder>(MyDiffUtil()) {
-    inner class ArticleHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val binding = ItemRvArticleBinding.bind(itemView)
-    }
+
+    private var getIdArticleOnClickCallBack: ((Long) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleHolder {
         LayoutInflater.from(parent.context)
             .inflate(R.layout.item_rv_article, parent, false)
@@ -25,13 +25,11 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
     }
 
     override fun onBindViewHolder(holder: ArticleHolder, position: Int) {
-        val parserDate = SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        val formatterDate = SimpleDateFormat("dd/MM/yyyy");
         getItem(position).let {
             with(holder.binding){
                 Picasso.get().load(it.urlImage.ifEmpty { "boo" }).error(R.drawable.feedarticles_logo).into(ivRvImage)
                 tvRvTitle.text = it.title
-                tvRvDate.text = formatterDate.format(parserDate.parse(it.createdAt)!!);
+                tvRvDate.text = parsedDate(it.createdAt)
                 tvRvDescription.text = it.description
 
                 when(it.category){
@@ -42,9 +40,20 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
                 }.let {
                     cvItemRv.setCardBackgroundColor(holder.itemView.resources.getColor(it))
                 }
+
+                cvItemRv.setOnClickListener { _ ->
+                    getIdArticleOnClickCallBack?.invoke(it.id)
+                }
             }
         }
+    }
 
+    fun setGetIdArticleOnClickCallBack(getIdArticleOnClickCallBack: (Long) -> Unit){
+        this.getIdArticleOnClickCallBack = getIdArticleOnClickCallBack
+    }
+
+    inner class ArticleHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val binding = ItemRvArticleBinding.bind(itemView)
     }
 }
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_detailArticle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detailArticle.DetailArticleFragment" >
+
+    <TextView
+        android:id="@+id/tv_detailArticle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/details_article"
+        android:theme="@style/AppNameTitleTheme"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_detailArticle_starEmpty"
+        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_star_big_off"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detailArticle_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_detailArticle_title" />
+
+    <ImageView
+        android:id="@+id/iv_detailArticle_starFill"
+        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/btn_star_big_on"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_detailArticle_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_detailArticle_title" />
+
+    <TextView
+        android:id="@+id/tv_detailArticle_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Created 25/02/2020"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailArticle_title" />
+
+    <TextView
+        android:id="@+id/tv_detailArticle_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Category: Various"
+        app:layout_constraintEnd_toEndOf="@+id/iv_detailArticle_starEmpty"
+        app:layout_constraintTop_toTopOf="@+id/tv_detailArticle_date" />
+
+    <TextView
+        android:id="@+id/tv_detailArticle_articleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/tv_detailArticle_category"
+        app:layout_constraintStart_toStartOf="@+id/tv_detailArticle_date"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailArticle_date"
+        tools:text="An example of title who can be long"
+        android:layout_marginTop="20dp"
+        android:textSize="24sp"/>
+
+    <ImageView
+        android:id="@+id/iv_detailArticle_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/feedarticles_logo"
+        app:layout_constraintEnd_toEndOf="@+id/tv_detailArticle_articleTitle"
+        app:layout_constraintStart_toStartOf="@+id/tv_detailArticle_articleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detailArticle_articleTitle" />
+
+    <ScrollView
+        android:id="@+id/sv_detailArticle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_detailArticle_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detailArticle_image">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_detailArticle_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="An example of title who can be long" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btn_detailArticle_back"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/back"
+        android:theme="@style/ButtonStyle"
+        android:layout_marginBottom="25dp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/sv_detailArticle"
+        app:layout_constraintStart_toStartOf="@+id/sv_detailArticle" />
+</androidx.constraintlayout.widget.ConstraintLayout>

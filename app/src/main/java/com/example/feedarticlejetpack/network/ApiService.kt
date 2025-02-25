@@ -1,6 +1,7 @@
 package com.example.feedarticlejetpack.network
 
 import com.example.feedarticlejetpack.network.dtos.GetAllArticlesResponseDto
+import com.example.feedarticlejetpack.network.dtos.GetArticleResponseDto
 import com.example.feedarticlejetpack.network.dtos.NewArticleDto
 import com.example.feedarticlejetpack.network.dtos.OnlyStatusReponseDto
 import com.example.feedarticlejetpack.network.dtos.RegisterAndLoginResponseDto
@@ -49,4 +50,11 @@ interface ApiService {
         @Header("token") token: String,
         @Body newArticleDto: NewArticleDto
     ) : Response<OnlyStatusReponseDto>?
+
+    @GET(ApiRoutes.GET_ARTICLE)
+    suspend fun getArticle(
+        @Header("token") token: String,
+        @Query("id") idArticle: Long,
+        @Query("with_fav") number: Int = 1
+    ) : Response<GetArticleResponseDto>?
 }

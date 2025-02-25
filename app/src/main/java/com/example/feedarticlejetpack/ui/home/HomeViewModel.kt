@@ -20,8 +20,10 @@ class HomeViewModel @Inject constructor(
 ): ViewModel() {
 
     private var _articlesListLiveData = MutableLiveData<List<ArticleDto>>()
-    val articlesListLiveData
-        get() = _articlesListLiveData
+
+    private var _articlesFilteredListLiveData = MutableLiveData<List<ArticleDto>>()
+    val articlesFilteredListLiveData
+        get() = _articlesFilteredListLiveData
 
     private var _userMessage = MutableLiveData<Int>()
     val userMessage
@@ -41,7 +43,7 @@ class HomeViewModel @Inject constructor(
         _isLogout.value = true
     }
 
-    fun getAllArticles(){
+    private fun getAllArticles(){
         myPrefs.token?.let {
             viewModelScope.launch {
                 val response = withContext(Dispatchers.IO){
@@ -57,6 +59,7 @@ class HomeViewModel @Inject constructor(
                         when(body.status){
                             "ok" -> {
                                 _articlesListLiveData.value = body.articles
+                                _articlesFilteredListLiveData.value = body.articles
                             }
                             "unauthorized" -> {
                                 _userMessage.value = R.string.unauthorized
@@ -71,5 +74,21 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun getFilteredListArticles(idButton: Int){
+        when(idButton){
+            R.id.rb_home_sport -> 1
+            R.id.rb_home_manga -> 2
+            R.id.rb_home_various -> 3
+            else -> 0
+        }.let {cat ->
+            _articlesFilteredListLiveData.value  = if (cat != 0)
+                _articlesListLiveData.value?.filter { it.category == cat }
+            else
+                _articlesListLiveData.value?.sortedByDescending { it.createdAt }
+        }
+
+
     }
 }

@@ -62,6 +62,7 @@ object AppModule {
     fun getSharedPref(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
 
+    @Singleton
     @Provides
     fun getArticleAdapter() = RecyclerArticlesAdapter()
 
