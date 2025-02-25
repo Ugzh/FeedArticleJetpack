@@ -114,10 +114,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <RadioButton
-                android:id="@+id/rb_addArticle_divers"
+                android:id="@+id/rb_addArticle_various"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/divers"
+                android:text="@string/various"
                 android:layout_marginStart="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/rb_addArticle_manga"

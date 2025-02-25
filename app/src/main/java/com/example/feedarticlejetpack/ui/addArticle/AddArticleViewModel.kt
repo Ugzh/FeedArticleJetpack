@@ -35,7 +35,7 @@ class AddArticleViewModel @Inject constructor(
         val cat = when(idButton){
             R.id.rb_addArticle_sport -> 1
             R.id.rb_addArticle_manga -> 2
-            R.id.rb_addArticle_divers -> 3
+            R.id.rb_addArticle_various -> 3
             else -> 0
         }
 

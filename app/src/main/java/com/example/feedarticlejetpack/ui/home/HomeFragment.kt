@@ -62,6 +62,10 @@ class HomeFragment : Fragment() {
         binding.ivHomeAdd.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_addArticleFragment)
         }
+
+        binding.rgHomeCategories.setOnCheckedChangeListener{ rg, _ ->
+            
+        }
     }
 
     override fun onDestroyView() {
