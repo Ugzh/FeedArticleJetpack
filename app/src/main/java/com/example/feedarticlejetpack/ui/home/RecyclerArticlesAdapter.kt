@@ -29,11 +29,19 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
         val formatterDate = SimpleDateFormat("dd/MM/yyyy");
         getItem(position).let {
             with(holder.binding){
-
-                Picasso.get().load(it.urlImage).error(R.drawable.feedarticles_logo).into(ivRvImage)
+                Picasso.get().load(it.urlImage.ifEmpty { "boo" }).error(R.drawable.feedarticles_logo).into(ivRvImage)
                 tvRvTitle.text = it.title
                 tvRvDate.text = formatterDate.format(parserDate.parse(it.createdAt)!!);
                 tvRvDescription.text = it.description
+
+                when(it.category){
+                    1 -> R.color.beige
+                    2 -> R.color.pink
+                    3 -> R.color.yellow
+                    else -> return
+                }.let {
+                    cvItemRv.setCardBackgroundColor(holder.itemView.resources.getColor(it))
+                }
             }
         }
 

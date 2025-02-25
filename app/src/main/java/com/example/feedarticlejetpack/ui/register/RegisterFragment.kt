@@ -39,9 +39,9 @@ class RegisterFragment : Fragment() {
         }
 
         vm.isRegister.observe(viewLifecycleOwner){
-            if(it){
+            if(it)
                 findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
-            }
+
         }
 
         vm.userMessage.observe(viewLifecycleOwner){

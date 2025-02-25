@@ -56,5 +56,19 @@
             app:destination="@id/loginFragment"
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_homeFragment_to_addArticleFragment"
+            app:destination="@id/addArticleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addArticleFragment"
+        android:name="com.example.feedarticlejetpack.ui.addArticle.AddArticleFragment"
+        android:label="fragment_add_article"
+        tools:layout="@layout/fragment_add_article" >
+        <action
+            android:id="@+id/action_addArticleFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/addArticleFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 </navigation>

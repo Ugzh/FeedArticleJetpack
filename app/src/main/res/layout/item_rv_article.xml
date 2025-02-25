@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cl_itemRv"
+    android:id="@+id/cv_itemRv"
     app:cardCornerRadius="5dp"
     android:layout_marginVertical="5dp"
     >

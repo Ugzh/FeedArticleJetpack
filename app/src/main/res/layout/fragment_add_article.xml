@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_addArticle"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.addArticle.AddArticleFragment">
+
+    <TextView
+        android:id="@+id/tv_addArticle_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_article"
+        android:layout_marginTop="40dp"
+        android:theme="@style/AppNameTitleTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_addArticle_articleTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:ems="10"
+        android:hint="@string/title"
+        android:layout_marginTop="40dp"
+        android:inputType="text"
+        android:textColor="@color/blue"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_addArticle_title" />
+
+
+    <TextView
+        android:id="@+id/tv_addArticle_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_articleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/et_addArticle_articleTitle" />
+
+    <EditText
+        android:id="@+id/et_addArticle_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        android:textColor="@color/blue"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="@+id/et_addArticle_articleTitle"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_articleTitle"
+        app:layout_constraintTop_toBottomOf="@+id/tv_addArticle_description" />
+
+    <EditText
+        android:id="@+id/et_addArticle_imageUrl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/image_url"
+        android:inputType="text"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/blue"
+        android:theme="@style/EditTextStyle"
+        app:layout_constraintEnd_toEndOf="@+id/et_addArticle_description"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_description"
+        app:layout_constraintTop_toBottomOf="@+id/et_addArticle_description" />
+
+
+    <ImageView
+        android:id="@+id/iv_addArticle_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/feedarticles_logo"
+        app:layout_constraintEnd_toEndOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/et_addArticle_imageUrl" />
+
+    <RadioGroup
+        android:id="@+id/rg_addArticle_cat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/iv_addArticle_image"
+        >
+
+
+
+            <RadioButton
+                android:id="@+id/rb_addArticle_sport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sport"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <RadioButton
+                android:id="@+id/rb_addArticle_manga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manga"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rb_addArticle_sport"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioButton
+                android:id="@+id/rb_addArticle_divers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/divers"
+                android:layout_marginStart="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/rb_addArticle_manga"
+                app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_addArticle_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/save"
+        android:theme="@style/ButtonStyle"
+        android:layout_marginTop="25dp"
+        app:cornerRadius="0dp"
+        android:elevation="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintStart_toStartOf="@+id/et_addArticle_imageUrl"
+        app:layout_constraintTop_toBottomOf="@+id/rg_addArticle_cat" />
+</androidx.constraintlayout.widget.ConstraintLayout>

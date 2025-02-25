@@ -1,8 +1,6 @@
 <resources>
     <string name="app_name">FeedArticleJetpack</string>
     <string name="app_title">Feed Articles</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="login">Login</string>
     <string name="sign_in">sign in</string>
     <string name="password">password</string>
@@ -24,4 +22,14 @@
     <string name="account_not_created">Account not created, check fields</string>
     <string name="account_created">Account has been created</string>
     <string name="unauthorized">Unauthorized</string>
+    <string name="new_article">New article</string>
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="image_url">Image URL</string>
+    <string name="sport">Sport</string>
+    <string name="manga">Manga</string>
+    <string name="divers">Divers</string>
+    <string name="save">Save</string>
+    <string name="article_created">Article has been created</string>
+    <string name="article_not_created">Article has not been created</string>
 </resources>

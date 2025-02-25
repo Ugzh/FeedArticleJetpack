@@ -31,13 +31,15 @@ class SplashFragment : Fragment() {
 
         vm.isAlreadyConnected.observe(viewLifecycleOwner){
             lifecycleScope.launch {
-                delay(3000)
+                delay(1000)
                 if (it)
                     findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                 else
                     findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+
             }
         }
+
     }
 
 }

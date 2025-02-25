@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SplashViewModel @Inject constructor(private val myPrefs: Prefs): ViewModel(){
+class SplashViewModel @Inject constructor( myPrefs: Prefs): ViewModel(){
 
     private var _isAlreadyConnected = MutableLiveData(false)
     val isAlreadyConnected

@@ -58,6 +58,10 @@ class HomeFragment : Fragment() {
             if(it)
                 findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
         }
+
+        binding.ivHomeAdd.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_addArticleFragment)
+        }
     }
 
     override fun onDestroyView() {
