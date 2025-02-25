@@ -68,11 +68,24 @@ class DetailArticleFragment : Fragment() {
                         .error(R.drawable.feedarticles_logo)
                         .into(binding.ivDetailArticleImage)
                 }
+                binding.ivDetailArticleStarEmpty.setOnClickListener { _ ->
+                    vm.toggleFavorite(it.id)
+                }
+                binding.ivDetailArticleStarFill.setOnClickListener { _ ->
+                    vm.toggleFavorite(it.id)
+                }
             }
         }
         binding.btnDetailArticleBack.setOnClickListener {
             findNavController().navigate(R.id.action_detailArticleFragment_to_homeFragment)
         }
+
+        vm.isFavorite.observe(viewLifecycleOwner){
+            binding.ivDetailArticleStarFill.visibility = if (it) View.VISIBLE else View.GONE
+            binding.ivDetailArticleStarEmpty.visibility = if (it) View.GONE else View.VISIBLE
+        }
+
+
     }
 
     override fun onDestroy() {

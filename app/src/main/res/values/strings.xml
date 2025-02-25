@@ -37,4 +37,7 @@
     <string name="back">Back</string>
     <string name="category_type">Category : %s</string>
     <string name="created_at">Created %s</string>
+    <string name="add_to_favorite">Has been added to favorite</string>
+    <string name="remove_to_favorite">Has been removed to favorite</string>
+    <string name="status_not_changed">Status not changed</string>
 </resources>

@@ -87,6 +87,7 @@ class HomeViewModel @Inject constructor(
                 _articlesListLiveData.value?.filter { it.category == cat }
             else
                 _articlesListLiveData.value?.sortedByDescending { it.createdAt }
+            
         }
 
 

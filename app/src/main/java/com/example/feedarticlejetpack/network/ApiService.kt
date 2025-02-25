@@ -57,4 +57,10 @@ interface ApiService {
         @Query("id") idArticle: Long,
         @Query("with_fav") number: Int = 1
     ) : Response<GetArticleResponseDto>?
+
+    @PUT(ApiRoutes.TOGGLE_FAVORITE)
+    suspend fun toggleFavorite(
+        @Path("id") idArticle: Long,
+        @Header("token") token: String
+    ) : Response<OnlyStatusReponseDto>?
 }
