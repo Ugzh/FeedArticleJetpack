@@ -48,6 +48,11 @@ class LoginFragment @Inject constructor(): Fragment(){
         binding.tvLoginNoAccount.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
+
+        vm.isLogged.observe(viewLifecycleOwner){
+            if(it)
+                findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        }
     }
 
     override fun onDestroy() {

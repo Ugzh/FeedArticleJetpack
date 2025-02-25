@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.feedarticlejetpack.network.ApiService
 import com.example.feedarticlejetpack.network.ApiRoutes
+import com.example.feedarticlejetpack.ui.home.RecyclerArticlesAdapter
 import com.example.feedarticlejetpack.utils.PREFS_FILENAME
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -60,5 +61,8 @@ object AppModule {
     @Provides
     fun getSharedPref(@ApplicationContext context: Context): SharedPreferences =
         context.getSharedPreferences(PREFS_FILENAME, Context.MODE_PRIVATE)
+
+    @Provides
+    fun getArticleAdapter() = RecyclerArticlesAdapter()
 
 }

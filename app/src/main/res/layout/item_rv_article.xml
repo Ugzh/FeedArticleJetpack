@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cl_itemRv"
+    app:cardCornerRadius="5dp"
+    android:layout_marginVertical="5dp"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_rv_image"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/feedarticles_logo"
+            android:layout_marginVertical="10dp"
+            android:layout_marginStart="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_rv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="15dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_rv_date"
+            app:layout_constraintEnd_toStartOf="@+id/tv_rv_date"
+            app:layout_constraintStart_toEndOf="@+id/iv_rv_image"
+            app:layout_constraintTop_toTopOf="@+id/iv_rv_image"
+            tools:text="Title placeholder" />
+
+        <TextView
+            android:id="@+id/tv_rv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rv_image"
+            app:layout_constraintEnd_toStartOf="@+id/iv_rv_favorite"
+            app:layout_constraintStart_toStartOf="@+id/tv_rv_title"
+            tools:text="okijrguhnifldginiuoidflgndkfijgdfkigunhdfgjbd;sd,jnfsdfk,sldffgkdfgionfd" />
+
+        <TextView
+            android:id="@+id/tv_rv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/iv_rv_image"
+            tools:text="25/02/2020" />
+
+        <ImageView
+            android:id="@+id/iv_rv_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_rv_image"
+            app:layout_constraintEnd_toEndOf="@+id/tv_rv_date"
+            app:srcCompat="@android:drawable/btn_star_big_on" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
