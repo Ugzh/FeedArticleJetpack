@@ -1,5 +1,6 @@
 package com.example.feedarticlejetpack.ui.editArticle
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,11 +22,11 @@ class EditArticleViewModel @Inject constructor(
 ): ViewModel() {
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isUpdatedOrDelete = MutableLiveData(false)
-    val isUpdatedOrDelete
+    val isUpdatedOrDelete : LiveData<Boolean>
         get() = _isUpdatedOrDelete
 
     fun deleteArticle(idArticle: Long){

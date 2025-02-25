@@ -1,6 +1,7 @@
 package com.example.feedarticlejetpack.ui.login
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,11 +21,11 @@ class LoginViewModel @Inject constructor(
 ): ViewModel() {
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isLogged = MutableLiveData(false)
-    val isLogged
+    val isLogged : LiveData<Boolean>
         get() = _isLogged
 
     fun logUser(login: String, password: String) {

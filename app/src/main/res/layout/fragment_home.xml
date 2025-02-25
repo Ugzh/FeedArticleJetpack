@@ -26,6 +26,7 @@
         app:layout_constraintEnd_toStartOf="@+id/iv_home_logout"
         app:layout_constraintStart_toEndOf="@+id/iv_home_add"
         app:layout_constraintTop_toTopOf="@+id/iv_home_add" />
+
     <ImageView
         android:id="@+id/iv_home_favoriteFill"
         android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
         app:layout_constraintBottom_toTopOf="@+id/rg_home_categories"
         app:layout_constraintEnd_toEndOf="@+id/iv_home_logout"
         app:layout_constraintStart_toStartOf="@+id/iv_home_add"
-        app:layout_constraintTop_toBottomOf="@+id/iv_home_favoriteEmpty" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_home_add" />
 
     <RadioGroup
         android:id="@+id/rg_home_categories"

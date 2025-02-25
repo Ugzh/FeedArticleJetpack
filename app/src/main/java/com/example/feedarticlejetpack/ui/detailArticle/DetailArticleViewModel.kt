@@ -1,5 +1,6 @@
 package com.example.feedarticlejetpack.ui.detailArticle
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,11 +22,11 @@ class DetailArticleViewModel @Inject constructor(
 ) : ViewModel() {
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isFavorite = MutableLiveData(false)
-    val isFavorite
+    val isFavorite : LiveData<Boolean>
         get() = _isFavorite
 
     fun setIsFavorite(favInt: Int)  {

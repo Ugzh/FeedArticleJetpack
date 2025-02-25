@@ -1,5 +1,6 @@
 package com.example.feedarticlejetpack.ui.home
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,8 +46,11 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
                     getIdArticleOnClickCallBack?.invoke(it.id)
                 }
 
-                if (it.isFav == 1)
+                if (it.isFav == 1){
                     ivRvFavorite.visibility = View.VISIBLE
+                    Log.d("fav", "${it.title} ${it.isFav}")
+                } else
+                    ivRvFavorite.visibility = View.GONE
             }
         }
     }

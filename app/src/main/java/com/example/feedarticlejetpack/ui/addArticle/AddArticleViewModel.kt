@@ -1,6 +1,7 @@
 package com.example.feedarticlejetpack.ui.addArticle
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -21,11 +22,11 @@ class AddArticleViewModel @Inject constructor(
 ) : ViewModel(){
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isArticleCreated = MutableLiveData(false)
-    val isArticleCreated
+    val isArticleCreated : LiveData<Boolean>
         get() = _isArticleCreated
 
     fun addArticle(title: String, desc: String, image: String, idButton: Int){

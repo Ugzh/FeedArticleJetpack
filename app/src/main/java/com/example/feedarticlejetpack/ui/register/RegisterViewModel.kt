@@ -1,5 +1,6 @@
 package com.example.feedarticlejetpack.ui.register
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,11 +17,11 @@ import javax.inject.Inject
 class RegisterViewModel @Inject constructor(private val db: ApiService) : ViewModel() {
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isRegister = MutableLiveData(false)
-    val isRegister
+    val isRegister : LiveData<Boolean>
         get() = _isRegister
 
     fun registerUser(login: String, password: String, confirmPassword: String){
@@ -45,8 +46,8 @@ class RegisterViewModel @Inject constructor(private val db: ApiService) : ViewMo
                         body == null -> _userMessage.value = R.string.error_from_database
                         response.isSuccessful -> {
                             when(body.status){
-                                5 -> userMessage.value = R.string.login_already_used
-                                0,-1 -> userMessage.value = R.string.account_not_created
+                                5 -> _userMessage.value = R.string.login_already_used
+                                0,-1 -> _userMessage.value = R.string.account_not_created
                                 1 -> {
                                     _userMessage.value = R.string.account_created
                                     _isRegister.value = true

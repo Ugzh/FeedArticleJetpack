@@ -1,6 +1,6 @@
 package com.example.feedarticlejetpack.ui.home
 
-import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,22 +24,25 @@ class HomeViewModel @Inject constructor(
     private var _articlesListLiveData = MutableLiveData<List<ArticleDto>>()
 
     private var _articlesFilteredListLiveData = MutableLiveData<List<ArticleDto>>()
-    val articlesFilteredListLiveData
+    val articlesFilteredListLiveData : LiveData<List<ArticleDto>>
         get() = _articlesFilteredListLiveData
 
     private var _navDirectionLiveData = MutableLiveData<NavDirections?>()
-    val navDirectionLiveData
+    val navDirectionLiveData : LiveData<NavDirections?>
         get() = _navDirectionLiveData
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage
+    val userMessage : LiveData<Int>
         get() = _userMessage
 
     private var _isLogout = MutableLiveData(false)
-    val isLogout
+    val isLogout : LiveData<Boolean>
         get() = _isLogout
 
+    private var _isFavoriteChecked = MutableLiveData(false)
 
+    val isFavoriteChecked : LiveData<Boolean>
+        get() = _isFavoriteChecked
 
     init {
         getAllArticles()
@@ -49,8 +52,7 @@ class HomeViewModel @Inject constructor(
         myPrefs.userId = 0
         _isLogout.value = true
     }
-
-    private fun getAllArticles(){
+    fun getAllArticles(){
         myPrefs.token?.let {
             viewModelScope.launch {
                 val response = withContext(Dispatchers.IO){
@@ -128,11 +130,25 @@ class HomeViewModel @Inject constructor(
             R.id.rb_home_manga -> 2
             R.id.rb_home_various -> 3
             else -> 0
-        }.let {cat ->
-            _articlesFilteredListLiveData.value  = if (cat != 0)
-                _articlesListLiveData.value?.filter { it.category == cat }
-            else
-                _articlesListLiveData.value?.sortedByDescending { it.createdAt }
+        }.let{ cat ->
+            when(_isFavoriteChecked.value!!){
+                true -> when(cat){
+                    1, 2, 3 -> _articlesListLiveData.value!!
+                        .filter { it.category == cat }
+                        .filter { it.isFav == 1 }
+                    else -> _articlesListLiveData.value?.filter { it.isFav == 1 }
+                    }
+                false -> when(cat){
+                    1, 2, 3 -> _articlesListLiveData.value?.filter { it.category == cat }
+                    else -> _articlesListLiveData.value?.sortedByDescending { it.createdAt }
+                }
+            }.also {
+                _articlesFilteredListLiveData.value = it
+            }
         }
+    }
+
+    fun toggleFavoriteList(){
+        _isFavoriteChecked.value = !_isFavoriteChecked.value!!
     }
 }

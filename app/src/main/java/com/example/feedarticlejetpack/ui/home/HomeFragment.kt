@@ -78,6 +78,25 @@ class HomeFragment : Fragment() {
         binding.rgHomeCategories.setOnCheckedChangeListener{ rg, _ ->
             vm.getFilteredListArticles(rg.checkedRadioButtonId)
         }
+
+        vm.isFavoriteChecked.observe(viewLifecycleOwner){
+            binding.ivHomeFavoriteEmpty.visibility = if (it) View.GONE else View.VISIBLE
+            binding.ivHomeFavoriteFill.visibility = if (it) View.VISIBLE else View.GONE
+            vm.getFilteredListArticles(binding.rgHomeCategories.checkedRadioButtonId)
+
+        }
+
+        binding.ivHomeFavoriteFill.setOnClickListener {
+            vm.toggleFavoriteList()
+        }
+        binding.ivHomeFavoriteEmpty.setOnClickListener {
+            vm.toggleFavoriteList()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        vm.getAllArticles()
     }
 
     override fun onDestroy() {
