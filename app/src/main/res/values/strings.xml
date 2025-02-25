@@ -8,4 +8,9 @@
     <string name="password">password</string>
     <string name="connect">connect</string>
     <string name="no_account_create_here">No account ? Create here !</string>
+    <string name="no_response_database">No response database</string>
+    <string name="internal_problem">Internal problem, you need to fill fields again</string>
+    <string name="wrong_informations">Wrong informations, check fields</string>
+    <string name="error_from_database">Error from database, please retry in few minutes</string>
+    <string name="fill_fields">Please fill all fields</string>
 </resources>

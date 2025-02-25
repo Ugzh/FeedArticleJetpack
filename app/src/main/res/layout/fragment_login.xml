@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginFragment">
+    tools:context=".ui.login.LoginFragment">
 
     <TextView
         android:id="@+id/tv_login_title"
@@ -25,6 +25,7 @@
         android:ems="10"
         android:inputType="text"
         android:hint="@string/login"
+        android:textColor="@color/blue"
         android:textColorHint="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,6 +36,7 @@
         android:id="@+id/et_login_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/blue"
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -46,12 +48,17 @@
 
     <Button
         android:id="@+id/btn_login_login"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:text="@string/connect"
+        app:cornerRadius="0dp"
+        android:backgroundTint="@color/blue"
+        android:textStyle=""
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_login_noAccount"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/et_login_password"
+        app:layout_constraintStart_toStartOf="@+id/et_login_password" />
 
     <TextView
         android:id="@+id/tv_login_noAccount"
