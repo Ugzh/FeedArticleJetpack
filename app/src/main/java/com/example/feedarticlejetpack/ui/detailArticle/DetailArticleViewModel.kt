@@ -41,22 +41,26 @@ class DetailArticleViewModel @Inject constructor(
             val body = response?.body()
 
             when{
-                response == null -> _userMessage.value = R.string.no_response_database
-                body == null -> _userMessage.value = R.string.error_from_database
+                response == null ->  R.string.no_response_database
+                body == null -> R.string.error_from_database
                 response.isSuccessful -> {
                     when(body.status){
                         1 -> {
-                            _userMessage.value = if(_isFavorite.value!!)
-                                R.string.remove_to_favorite
-                            else
-                                R.string.add_to_favorite
-
                             _isFavorite.value = !_isFavorite.value!!
+                            if(_isFavorite.value!!)
+                                R.string.add_to_favorite
+                            else
+                                R.string.remove_to_favorite
+
                         }
-                        0, -1 -> _userMessage.value = R.string.status_not_changed
-                        -5 -> _userMessage.value = R.string.unauthorized
+                        0, -1 ->  R.string.status_not_changed
+                        -5 ->  R.string.unauthorized
+                        else -> return@launch
                     }
                 }
+                else -> return@launch
+            }.let {
+                _userMessage.value = it
             }
         }
     }

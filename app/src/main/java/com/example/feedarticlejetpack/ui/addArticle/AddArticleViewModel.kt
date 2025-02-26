@@ -1,6 +1,5 @@
 package com.example.feedarticlejetpack.ui.addArticle
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -55,18 +54,22 @@ class AddArticleViewModel @Inject constructor(
                 val body = response?.body()
 
                 when{
-                    response == null -> _userMessage.value = R.string.no_response_database
-                    body == null -> _userMessage.value = R.string.error_from_database
+                    response == null -> R.string.no_response_database
+                    body == null -> R.string.error_from_database
                     response.isSuccessful -> {
                         when(body.status){
                             1 -> {
-                                _userMessage.value = R.string.article_created
                                 _isArticleCreated.value = true
+                                R.string.article_created
                             }
-                            0, -1 -> _userMessage.value = R.string.article_not_created
-                            -5 -> _userMessage.value = R.string.unauthorized
+                            0, -1 -> R.string.article_not_created
+                            -5 -> R.string.unauthorized
+                            else -> return@launch
                         }
                     }
+                    else -> return@launch
+                }.let {
+                    _userMessage.value = it
                 }
             }
         } else

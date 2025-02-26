@@ -42,18 +42,22 @@ class RegisterViewModel @Inject constructor(private val db: ApiService) : ViewMo
                     val body = response?.body()
 
                     when{
-                        response == null -> _userMessage.value = R.string.no_response_database
-                        body == null -> _userMessage.value = R.string.error_from_database
+                        response == null -> R.string.no_response_database
+                        body == null ->  R.string.error_from_database
                         response.isSuccessful -> {
                             when(body.status){
-                                5 -> _userMessage.value = R.string.login_already_used
-                                0,-1 -> _userMessage.value = R.string.account_not_created
+                                5 -> R.string.login_already_used
+                                0,-1 -> R.string.account_not_created
                                 1 -> {
-                                    _userMessage.value = R.string.account_created
                                     _isRegister.value = true
+                                     R.string.account_created
                                 }
+                                else -> return@launch
                             }
                         }
+                        else -> return@launch
+                    }.let {
+                        _userMessage.value = it
                     }
                 }
             } else

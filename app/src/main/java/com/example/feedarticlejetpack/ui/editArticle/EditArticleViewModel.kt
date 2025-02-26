@@ -81,20 +81,23 @@ class EditArticleViewModel @Inject constructor(
                 val body = response?.body()
 
                 when{
-                    response == null -> _userMessage.value = R.string.no_response_database
-                    body == null -> _userMessage.value = R.string.error_from_database
+                    response == null -> R.string.no_response_database
+                    body == null -> R.string.error_from_database
                     response.isSuccessful -> {
                         when(body.status){
                             1 -> {
-                                _userMessage.value = R.string.article_updated
                                 _isUpdatedOrDelete.value = true
+                                 R.string.article_updated
                             }
-                            0 -> _userMessage.value = R.string.article_content_same
-                            -1, -2 -> _userMessage.value = R.string.article_not_updated
-                            -5 -> _userMessage.value = R.string.unauthorized
+                            0 -> R.string.article_content_same
+                            -1, -2 ->  R.string.article_not_updated
+                            -5 -> R.string.unauthorized
                             else -> return@launch
                         }
                     }
+                    else -> return@launch
+                }.let {
+                    _userMessage.value = it
                 }
             }
         } else

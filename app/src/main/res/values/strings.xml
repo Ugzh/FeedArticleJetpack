@@ -3,7 +3,7 @@
     <string name="app_title" translatable="false">Feed Articles</string>
     <string name="login" translatable="false">Login</string>
     <string name="sign_in">sign in</string>
-    <string name="password" translatable="false">P assword</string>
+    <string name="password" translatable="false">Password</string>
     <string name="confirm_password" translatable="false">Confirm password</string>
     <string name="connect">connect</string>
     <string name="no_account_create_here">No account ? Create here !</string>
