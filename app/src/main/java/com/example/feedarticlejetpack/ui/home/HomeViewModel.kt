@@ -22,27 +22,22 @@ class HomeViewModel @Inject constructor(
 ): ViewModel() {
 
     private var _articlesListLiveData = MutableLiveData<List<ArticleDto>>()
-
-    private var _articlesFilteredListLiveData = MutableLiveData<List<ArticleDto>>()
-    val articlesFilteredListLiveData : LiveData<List<ArticleDto>>
-        get() = _articlesFilteredListLiveData
+    val articlesListLiveData : LiveData<List<ArticleDto>> get() = _articlesListLiveData
 
     private var _navDirectionLiveData = MutableLiveData<NavDirections?>()
-    val navDirectionLiveData : LiveData<NavDirections?>
-        get() = _navDirectionLiveData
+    val navDirectionLiveData : LiveData<NavDirections?> get() = _navDirectionLiveData
 
     private var _userMessage = MutableLiveData<Int>()
-    val userMessage : LiveData<Int>
-        get() = _userMessage
+    val userMessage : LiveData<Int> get() = _userMessage
 
     private var _isLogout = MutableLiveData(false)
-    val isLogout : LiveData<Boolean>
-        get() = _isLogout
+    val isLogout : LiveData<Boolean> get() = _isLogout
 
     private var _isFavoriteChecked = MutableLiveData(false)
 
-    val isFavoriteChecked : LiveData<Boolean>
-        get() = _isFavoriteChecked
+    val isFavoriteChecked : LiveData<Boolean> get() = _isFavoriteChecked
+
+    private var numCat = 0
 
     init {
         getAllArticles()
@@ -67,8 +62,12 @@ class HomeViewModel @Inject constructor(
                     response.isSuccessful -> {
                         when(body.status){
                             "ok" -> {
-                                _articlesListLiveData.value = body.articles
-                                _articlesFilteredListLiveData.value = body.articles
+                                when(_isFavoriteChecked.value!!){
+                                    true -> setFilteredCategoryAndLikedList(numCat, body.articles)
+                                    false -> setFilteredCategoryList(numCat, body.articles)
+                                }.also {
+                                    _articlesListLiveData.value = it
+                                }
                             }
                             "unauthorized" -> {
                                 _userMessage.value = R.string.unauthorized
@@ -82,6 +81,26 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             }
+        }
+    }
+
+    private fun setFilteredCategoryAndLikedList(idCat: Int, articleList: List<ArticleDto>): List<ArticleDto>{
+        when(idCat){
+            1, 2, 3 -> articleList
+                .filter { it.category == idCat }
+                .filter { it.isFav == 1 }
+            else -> articleList.filter { it.isFav == 1 }
+        }.let {
+            return it
+        }
+    }
+
+    private fun setFilteredCategoryList(idCat: Int, articleList: List<ArticleDto>): List<ArticleDto>{
+        when(idCat) {
+            1, 2, 3 -> articleList.filter { it.category == idCat }
+            else -> articleList
+        }.let {
+            return it
         }
     }
 
@@ -124,31 +143,17 @@ class HomeViewModel @Inject constructor(
         _navDirectionLiveData.value = null
     }
 
-    fun getFilteredListArticles(idButton: Int){
-        when(idButton){
+    fun setCategoryToFilter(idButton: Int){
+        numCat = when(idButton){
             R.id.rb_home_sport -> 1
             R.id.rb_home_manga -> 2
             R.id.rb_home_various -> 3
             else -> 0
-        }.let{ cat ->
-            when(_isFavoriteChecked.value!!){
-                true -> when(cat){
-                    1, 2, 3 -> _articlesListLiveData.value!!
-                        .filter { it.category == cat }
-                        .filter { it.isFav == 1 }
-                    else -> _articlesListLiveData.value?.filter { it.isFav == 1 }
-                    }
-                false -> when(cat){
-                    1, 2, 3 -> _articlesListLiveData.value?.filter { it.category == cat }
-                    else -> _articlesListLiveData.value?.sortedByDescending { it.createdAt }
-                }
-            }.also {
-                _articlesFilteredListLiveData.value = it
-            }
         }
+        getAllArticles()
     }
 
-    fun toggleFavoriteList(){
+    fun toggleFavoriteChecked(){
         _isFavoriteChecked.value = !_isFavoriteChecked.value!!
     }
 }

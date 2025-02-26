@@ -14,7 +14,7 @@ import com.example.feedarticlejetpack.utils.parsedDate
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 
-class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter.ArticleHolder>(MyDiffUtil()) {
+class RecyclerArticlesAdapter : ListAdapter<ArticleDto, RecyclerArticlesAdapter.ArticleHolder>(MyDiffUtilArticle()) {
 
     private var getIdArticleOnClickCallBack: ((Long) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleHolder {
@@ -48,7 +48,6 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
 
                 if (it.isFav == 1){
                     ivRvFavorite.visibility = View.VISIBLE
-                    Log.d("fav", "${it.title} ${it.isFav}")
                 } else
                     ivRvFavorite.visibility = View.GONE
             }
@@ -64,12 +63,10 @@ class RecyclerArticlesAdapter(): ListAdapter<ArticleDto, RecyclerArticlesAdapter
     }
 }
 
-class MyDiffUtil: DiffUtil.ItemCallback<ArticleDto>() {
+class MyDiffUtilArticle: DiffUtil.ItemCallback<ArticleDto>() {
     override fun areItemsTheSame(oldItem: ArticleDto, newItem: ArticleDto) =
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: ArticleDto, newItem: ArticleDto) =
         oldItem == newItem
-
-
 }

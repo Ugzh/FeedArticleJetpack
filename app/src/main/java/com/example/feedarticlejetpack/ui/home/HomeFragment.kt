@@ -58,7 +58,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        vm.articlesFilteredListLiveData.observe(viewLifecycleOwner){
+        vm.articlesListLiveData.observe(viewLifecycleOwner){
             articlesAdapter.submitList(it){
                 binding.rvHomeArticles.scrollToPosition(0)
             }
@@ -78,25 +78,25 @@ class HomeFragment : Fragment() {
         }
 
         binding.rgHomeCategories.setOnCheckedChangeListener{ rg, _ ->
-            vm.getFilteredListArticles(rg.checkedRadioButtonId)
+            vm.setCategoryToFilter(rg.checkedRadioButtonId)
         }
 
         vm.isFavoriteChecked.observe(viewLifecycleOwner){
             binding.ivHomeFavoriteEmpty.visibility = if (it) View.GONE else View.VISIBLE
             binding.ivHomeFavoriteFill.visibility = if (it) View.VISIBLE else View.GONE
-            vm.getFilteredListArticles(binding.rgHomeCategories.checkedRadioButtonId)
+            vm.setCategoryToFilter(binding.rgHomeCategories.checkedRadioButtonId)
 
         }
 
         binding.ivHomeFavoriteFill.setOnClickListener {
-            vm.toggleFavoriteList()
+            vm.toggleFavoriteChecked()
         }
         binding.ivHomeFavoriteEmpty.setOnClickListener {
-            vm.toggleFavoriteList()
+            vm.toggleFavoriteChecked()
         }
 
         binding.swHome.setOnRefreshListener {
-            vm.getFilteredListArticles(binding.rgHomeCategories.checkedRadioButtonId)
+            vm.getAllArticles()
             binding.swHome.isRefreshing = false
         }
     }
@@ -104,6 +104,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         vm.getAllArticles()
+        
     }
 
     override fun onDestroy() {
