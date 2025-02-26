@@ -65,7 +65,7 @@ class HomeViewModel @Inject constructor(
                                 when(_isFavoriteChecked.value!!){
                                     true -> setFilteredCategoryAndLikedList(numCat, body.articles)
                                     false -> setFilteredCategoryList(numCat, body.articles)
-                                }.also {
+                                }.let {
                                     _articlesListLiveData.value = it
                                 }
                             }

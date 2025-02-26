@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">FeedArticleJetpack</string>
-    <string name="app_title">Feed Articles</string>
-    <string name="login">Login</string>
+    <string name="app_name" translatable="false">FeedArticleJetpack</string>
+    <string name="app_title" translatable="false">Feed Articles</string>
+    <string name="login" translatable="false">Login</string>
     <string name="sign_in">sign in</string>
-    <string name="password">password</string>
-    <string name="confirm_password">Confirm password</string>
+    <string name="password" translatable="false">P assword</string>
+    <string name="confirm_password" translatable="false">Confirm password</string>
     <string name="connect">connect</string>
     <string name="no_account_create_here">No account ? Create here !</string>
     <string name="no_response_database">No response database</string>
@@ -15,7 +15,7 @@
         Error from database, we need to disconnected us, please retry in few minutes
     </string>
     <string name="fill_fields">Please fill all fields</string>
-    <string name="password_not_match">Password doesn\'t match</string>
+    <string name="password_not_match">Passwords doesn\'t match</string>
     <string name="new_account">New Account</string>
     <string name="register">Register</string>
     <string name="login_already_used">Login already used</string>
@@ -25,15 +25,16 @@
     <string name="new_article">New article</string>
     <string name="title">Title</string>
     <string name="content">Content</string>
-    <string name="image_url">Image URL</string>
-    <string name="sport">Sport</string>
-    <string name="manga">Manga</string>
+    <string name="image_url" translatable="false">Image URL</string>
+    <string name="sport" translatable="false">Sport</string>
+    <string name="manga" translatable="false">Manga</string>
     <string name="various">Various</string>
     <string name="save">Save</string>
     <string name="article_created">Article has been created</string>
     <string name="article_updated">Article has been updated</string>
     <string name="article_not_created">Article has not been created</string>
     <string name="article_not_updated">Article has not been updated</string>
+    <string name="article_content_same">Content is same, so article has not been updated</string>
     <string name="all">All</string>
     <string name="details_article">Details Article</string>
     <string name="back">Back</string>

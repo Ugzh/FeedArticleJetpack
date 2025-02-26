@@ -89,7 +89,8 @@ class EditArticleViewModel @Inject constructor(
                                 _userMessage.value = R.string.article_updated
                                 _isUpdatedOrDelete.value = true
                             }
-                            0, -1, -2 -> _userMessage.value = R.string.article_not_updated
+                            0 -> _userMessage.value = R.string.article_content_same
+                            -1, -2 -> _userMessage.value = R.string.article_not_updated
                             -5 -> _userMessage.value = R.string.unauthorized
                             else -> return@launch
                         }

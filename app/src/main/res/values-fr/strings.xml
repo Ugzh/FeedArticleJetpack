@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="connect">Se connecter</string>
+    <string name="no_account_create_here">Pas de compte ? Inscrivez-vous !</string>
+    <string name="no_response_database">Pas de réponse de la base de données</string>
+    <string name="internal_problem">Problème interne, vous devez remplir les champs à nouveau</string>
+    <string name="wrong_informations">Informations erronées, vérifier les champs</string>
+    <string name="error_from_database">Erreur de la base de données, veuillez réessayer dans quelques minutes</string>
+    <string name="error_from_database_redirection">
+        Erreur de la base de données, nous devons nous déconnecter, veuillez réessayer dans quelques minutes.
+    </string>
+    <string name="fill_fields">Veuillez remplir tous les champs</string>
+    <string name="password_not_match">Les mots de passe ne correspondent pas</string>
+    <string name="new_account">Nouveau Compte</string>
+    <string name="register">S\'inscire</string>
+    <string name="login_already_used">Login déjà utilisé</string>
+    <string name="account_not_created">Compte non créé, vérifier les champs</string>
+    <string name="account_created">Compte créé</string>
+    <string name="unauthorized">Non authorisé</string>
+    <string name="new_article">Nouvel Article</string>
+    <string name="title">Titre</string>
+    <string name="content">Contenu</string>
+    <string name="image_url">Image URL</string>
+    <string name="sport">Sport</string>
+    <string name="manga">Manga</string>
+    <string name="various">Divers</string>
+    <string name="save">Enregister</string>
+    <string name="article_created">L\'article a été créé</string>
+    <string name="article_updated">L\'article a été modifié</string>
+    <string name="article_not_created">L\'article a pas été créé</string>
+    <string name="article_not_updated">L\'article a pas été modifié</string>
+    <string name="article_content_same">Le contenu est le même, l\'article n\'a donc pas été mis à jour</string>
+    <string name="all">Tous</string>
+    <string name="details_article">Détails Article</string>
+    <string name="back">Retour</string>
+    <string name="category_type">Catégorie : %s</string>
+    <string name="created_at">Créé le %s</string>
+    <string name="add_to_favorite">A été ajouté aux favoris</string>
+    <string name="remove_to_favorite">A été retiré des favoris</string>
+    <string name="status_not_changed">Status non changé</string>
+    <string name="edit_article">Edition Article</string>
+    <string name="delete">Supprimer</string>
+    <string name="update">Mettre à jour</string>
+    <string name="article_deleted">L\'article a été supprimé</string>
+    <string name="article_not_deleted">L\'article a pas été supprimé</string>
+    <string name="sign_in">Connectez-vous</string>
+</resources>

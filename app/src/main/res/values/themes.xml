@@ -4,6 +4,9 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="android:textColor">@color/blue</item>
+        <item name="android:colorAccent">@color/blue</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
     </style>
 
     <style name="Theme.FeedArticleJetpack" parent="Base.Theme.FeedArticleJetpack" />
@@ -18,7 +21,10 @@
 
     <style name="ButtonStyle" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:backgroundTint">@color/blue</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:shadowColor">@color/blue</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="EditTextStyle" parent="Theme.Material3.DayNight.NoActionBar">
