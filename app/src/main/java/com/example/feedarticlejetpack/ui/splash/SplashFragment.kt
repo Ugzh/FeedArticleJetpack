@@ -31,7 +31,7 @@ class SplashFragment : Fragment() {
 
         vm.isAlreadyConnected.observe(viewLifecycleOwner){
             lifecycleScope.launch {
-                delay(1000)
+                delay(3000)
                 if (it)
                     findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
                 else

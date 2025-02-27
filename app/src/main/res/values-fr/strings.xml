@@ -16,13 +16,10 @@
     <string name="login_already_used">Login déjà utilisé</string>
     <string name="account_not_created">Compte non créé, vérifier les champs</string>
     <string name="account_created">Compte créé</string>
-    <string name="unauthorized">Non authorisé</string>
+    <string name="unauthorized">Non autorisé</string>
     <string name="new_article">Nouvel Article</string>
     <string name="title">Titre</string>
     <string name="content">Contenu</string>
-    <string name="image_url">Image URL</string>
-    <string name="sport">Sport</string>
-    <string name="manga">Manga</string>
     <string name="various">Divers</string>
     <string name="save">Enregister</string>
     <string name="article_created">L\'article a été créé</string>

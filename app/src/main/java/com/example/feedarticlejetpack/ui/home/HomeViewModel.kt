@@ -45,7 +45,7 @@ class HomeViewModel @Inject constructor(
     fun disconnectUser(){
         myPrefs.token = null
         myPrefs.userId = 0
-        _isLogout.value = true
+        _isLogout.postValue(true)
     }
     fun getAllArticles(){
         myPrefs.token?.let {
@@ -71,7 +71,7 @@ class HomeViewModel @Inject constructor(
                             }
                             "unauthorized" -> {
                                 _userMessage.value = R.string.unauthorized
-                                _isLogout.value = true
+                                disconnectUser()
                             }
                             else -> {
                                 _userMessage.value = R.string.error_from_database_redirection
@@ -143,7 +143,7 @@ class HomeViewModel @Inject constructor(
         _navDirectionLiveData.value = null
     }
 
-    fun setCategoryToFilter(idButton: Int){
+    fun setFilter(idButton: Int){
         numCat = when(idButton){
             R.id.rb_home_sport -> 1
             R.id.rb_home_manga -> 2
@@ -156,4 +156,5 @@ class HomeViewModel @Inject constructor(
     fun toggleFavoriteChecked(){
         _isFavoriteChecked.value = !_isFavoriteChecked.value!!
     }
+
 }

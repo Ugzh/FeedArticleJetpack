@@ -40,7 +40,7 @@ class RegisterFragment : Fragment() {
 
         vm.isRegister.observe(viewLifecycleOwner){
             if(it)
-                findNavController().navigate(R.id.action_registerFragment_to_loginFragment)
+                findNavController().navigate(R.id.action_registerFragment_to_homeFragment)
 
         }
 
@@ -49,8 +49,8 @@ class RegisterFragment : Fragment() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

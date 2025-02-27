@@ -1,6 +1,7 @@
 package com.example.feedarticlejetpack.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -69,8 +70,9 @@ class HomeFragment : Fragment() {
         }
 
         vm.isLogout.observe(viewLifecycleOwner){
-            if(it)
+            if(it) {
                 findNavController().navigate(R.id.action_homeFragment_to_loginFragment)
+            }
         }
 
         binding.ivHomeAdd.setOnClickListener {
@@ -78,19 +80,19 @@ class HomeFragment : Fragment() {
         }
 
         binding.rgHomeCategories.setOnCheckedChangeListener{ rg, _ ->
-            vm.setCategoryToFilter(rg.checkedRadioButtonId)
+            vm.setFilter(rg.checkedRadioButtonId)
         }
 
         vm.isFavoriteChecked.observe(viewLifecycleOwner){
             binding.ivHomeFavoriteEmpty.visibility = if (it) View.GONE else View.VISIBLE
             binding.ivHomeFavoriteFill.visibility = if (it) View.VISIBLE else View.GONE
-            vm.setCategoryToFilter(binding.rgHomeCategories.checkedRadioButtonId)
-
+            vm.setFilter(binding.rgHomeCategories.checkedRadioButtonId)
         }
 
         binding.ivHomeFavoriteFill.setOnClickListener {
             vm.toggleFavoriteChecked()
         }
+
         binding.ivHomeFavoriteEmpty.setOnClickListener {
             vm.toggleFavoriteChecked()
         }
@@ -107,8 +109,8 @@ class HomeFragment : Fragment() {
         
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 
